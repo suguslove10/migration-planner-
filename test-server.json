@@ -1,0 +1,132 @@
+{
+  "servers": [
+      {
+          "serverId": "test-server-1",
+          "serverName": "Test Web Server",
+          "serverType": "Linux",
+          "osName": "Ubuntu",
+          "osVersion": "20.04",
+          "metrics": {
+              "cpu": {
+                  "cores": 4,
+                  "utilization": 65
+              },
+              "memory": {
+                  "total": 16384,
+                  "used": 12288
+              },
+              "storage": {
+                  "total": 512000,
+                  "used": 358400
+              }
+          }
+      },
+      {
+          "serverId": "test-server-2",
+          "serverName": "Test Database Server",
+          "serverType": "Linux",
+          "osName": "Amazon Linux",
+          "osVersion": "2",
+          "metrics": {
+              "cpu": {
+                  "cores": 8,
+                  "utilization": 75
+              },
+              "memory": {
+                  "total": 32768,
+                  "used": 24576
+              },
+              "storage": {
+                  "total": 1024000,
+                  "used": 768000
+              }
+          }
+      }
+  ],
+  "analysisResults": {
+      "test-server-1": {
+          "complexity": {
+              "level": "Medium",
+              "score": 5,
+              "description": "Moderate complexity due to standard configurations"
+          },
+          "migrationStrategy": {
+              "strategy": "Rehost",
+              "description": "Suitable for lift-and-shift migration",
+              "risk_level": "Low"
+          },
+          "dependencies": [
+              {"name": "MySQL Database", "type": "Database"},
+              {"name": "Redis Cache", "type": "Cache"}
+          ]
+      },
+      "test-server-2": {
+          "complexity": {
+              "level": "High",
+              "score": 8,
+              "description": "High complexity due to database configurations"
+          },
+          "migrationStrategy": {
+              "strategy": "Replatform",
+              "description": "Database optimization recommended",
+              "risk_level": "Medium"
+          },
+          "dependencies": [
+              {"name": "Storage Volume", "type": "Storage"},
+              {"name": "Backup Service", "type": "Service"}
+          ]
+      }
+  },
+  "costEstimates": {
+      "test-server-1": {
+          "currency": "INR",
+          "currentMonthlyCost": 50000.00,
+          "projectedMonthlyCost": 35000.00,
+          "monthlySavings": 15000.00,
+          "annualSavings": 180000.00,
+          "migrationCost": 100000.00,
+          "roiMonths": 6.7,
+          "recommendations": {
+              "compute": {
+                  "instanceType": "t3.xlarge",
+                  "monthlyCost": 25000.00,
+                  "specs": {
+                      "cpu": 4,
+                      "memory": 16,
+                      "hourlyCost": 34.25
+                  }
+              },
+              "storage": {
+                  "type": "gp3",
+                  "sizeGB": 500,
+                  "monthlyCost": 10000.00
+              }
+          }
+      },
+      "test-server-2": {
+          "currency": "INR",
+          "currentMonthlyCost": 80000.00,
+          "projectedMonthlyCost": 60000.00,
+          "monthlySavings": 20000.00,
+          "annualSavings": 240000.00,
+          "migrationCost": 150000.00,
+          "roiMonths": 7.5,
+          "recommendations": {
+              "compute": {
+                  "instanceType": "r5.2xlarge",
+                  "monthlyCost": 45000.00,
+                  "specs": {
+                      "cpu": 8,
+                      "memory": 64,
+                      "hourlyCost": 61.64
+                  }
+              },
+              "storage": {
+                  "type": "io1",
+                  "sizeGB": 1000,
+                  "monthlyCost": 15000.00
+              }
+          }
+      }
+  }
+}
